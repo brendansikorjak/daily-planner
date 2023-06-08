@@ -20,6 +20,18 @@
 //
 // TODO: Add code to display the current date in the header of the page.
 
+// var newSchedule = {
+//   hour9: "",
+//   hour10: "",
+//   hour11: "",
+//   hour12: "",
+//   hour13: "",
+//   hour14: "",
+//   hour15: "",
+//   hour16: "",
+//   hour17: "",
+// };
+
 var initilizeLocalStorage = function () {
   var dataFromLS = JSON.parse(localStorage.getItem("schedule"));
 
@@ -129,5 +141,23 @@ for (let index = 0; index < saveButtons.length; index++) {
   // this has to be called on a html element and not an array
   button.addEventListener("click", saveText);
 }
+
+function printText() {
+  var scheduleLS = JSON.parse(localStorage.getItem("schedule"));
+
+  for (let i = 0; i < scheduleLS.length; i++) {
+    $("#hour-" + scheduleLS[i].hour)
+      .find(".description")
+      .text(scheduleLS[i].todoData);
+  }
+}
+printText();
+
 // var currentTime = dayjs();
 // $('#currentTime').text(currentTime.format('h:mm:ss'));
+
+// function keepText() {
+//   var savedData = JSON.parse(localStorage.getItem("schedule"));
+// }
+
+// keepText();
