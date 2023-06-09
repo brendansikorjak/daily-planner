@@ -20,18 +20,6 @@
 //
 // TODO: Add code to display the current date in the header of the page.
 
-// var newSchedule = {
-//   hour9: "",
-//   hour10: "",
-//   hour11: "",
-//   hour12: "",
-//   hour13: "",
-//   hour14: "",
-//   hour15: "",
-//   hour16: "",
-//   hour17: "",
-// };
-
 var initilizeLocalStorage = function () {
   var dataFromLS = JSON.parse(localStorage.getItem("schedule"));
 
@@ -46,71 +34,17 @@ $("#currentDay").text(today.format("MMM D, YYYY"));
 var currentHour = today.format("H");
 console.log(typeof currentHour, currentHour);
 
-var hour9 = document.getElementById("hour-9");
-var hour10 = document.getElementById("hour-10");
-var hour11 = document.getElementById("hour-11");
-var hour12 = document.getElementById("hour-12");
-var hour1 = document.getElementById("hour-13");
-var hour2 = document.getElementById("hour-14");
-var hour3 = document.getElementById("hour-15");
-var hour4 = document.getElementById("hour-16");
-var hour5 = document.getElementById("hour-17");
-
 function changeColors() {
-  if (currentHour === "9") {
-    hour9.style.backgroundColor = "#ff6961";
-  } else if (currentHour === "10") {
-    hour9.style.backgroundColor = "#d3d3d3";
-    hour10.style.backgroundColor = "#ff6961";
-  } else if (currentHour === "11") {
-    hour9.style.backgroundColor = "#d3d3d3";
-    hour10.style.backgroundColor = "#d3d3d3";
-    hour11.style.backgroundColor = "#ff6961";
-  } else if (currentHour === "12") {
-    hour9.style.backgroundColor = "#d3d3d3";
-    hour10.style.backgroundColor = "#d3d3d3";
-    hour11.style.backgroundColor = "#d3d3d3";
-    hour12.style.backgroundColor = "#ff6961";
-  } else if (currentHour === "13") {
-    hour9.style.backgroundColor = "#d3d3d3";
-    hour10.style.backgroundColor = "#d3d3d3";
-    hour11.style.backgroundColor = "#d3d3d3";
-    hour12.style.backgroundColor = "#d3d3d3";
-    hour1.style.backgroundColor = "#ff6961";
-  } else if (currentHour === "14") {
-    hour9.style.backgroundColor = "#d3d3d3";
-    hour10.style.backgroundColor = "#d3d3d3";
-    hour11.style.backgroundColor = "#d3d3d3";
-    hour12.style.backgroundColor = "#d3d3d3";
-    hour1.style.backgroundColor = "#d3d3d3";
-    hour2.style.backgroundColor = "#ff6961";
-  } else if (currentHour === "15") {
-    hour9.style.backgroundColor = "#d3d3d3";
-    hour10.style.backgroundColor = "#d3d3d3";
-    hour11.style.backgroundColor = "#d3d3d3";
-    hour12.style.backgroundColor = "#d3d3d3";
-    hour1.style.backgroundColor = "#d3d3d3";
-    hour2.style.backgroundColor = "#d3d3d3";
-    hour3.style.backgroundColor = "#ff6961";
-  } else if (currentHour === "16") {
-    hour9.style.backgroundColor = "#d3d3d3";
-    hour10.style.backgroundColor = "#d3d3d3";
-    hour11.style.backgroundColor = "#d3d3d3";
-    hour12.style.backgroundColor = "#d3d3d3";
-    hour1.style.backgroundColor = "#d3d3d3";
-    hour2.style.backgroundColor = "#d3d3d3";
-    hour3.style.backgroundColor = "#d3d3d3";
-    hour4.style.backgroundColor = "#ff6961";
-  } else if (currentHour === "17") {
-    hour9.style.backgroundColor = "#d3d3d3";
-    hour10.style.backgroundColor = "#d3d3d3";
-    hour11.style.backgroundColor = "#d3d3d3";
-    hour12.style.backgroundColor = "#d3d3d3";
-    hour1.style.backgroundColor = "#d3d3d3";
-    hour2.style.backgroundColor = "#d3d3d3";
-    hour3.style.backgroundColor = "#d3d3d3";
-    hour4.style.backgroundColor = "#d3d3d3";
-    hour5.style.backgroundColor = "#ff6961";
+  var currentHourInt = parseInt(currentHour);
+  for (let i = 9; i < 18; i++) {
+    var istr = i.toString();
+    if (i < currentHourInt) {
+      var current = document.getElementById(`hour-${istr}`);
+      current.style.backgroundColor = "#d3d3d3";
+    } else if (i === currentHourInt) {
+      var current = document.getElementById(`hour-${istr}`);
+      current.style.backgroundColor = "#ff6961";
+    }
   }
 }
 changeColors();
